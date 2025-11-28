@@ -617,11 +617,14 @@ class Florence2Run:
                         # Get the first point for text positioning
                         text_x, text_y = new_box[0]+8, new_box[1]+2
                         
-                        draw.text((text_x, text_y),
+                        try:
+                            draw.text((text_x, text_y),
                                   "{}".format(label),
-                                  align="right",
-                                  font=font,
-                                  fill=color)
+                                    align="right",
+                                    font=font,
+                                    fill=color)
+                        except:
+                            print("draw text error")
                         
                         # Draw the mask
                         mask_draw.polygon(new_box, outline="white", fill="white")
